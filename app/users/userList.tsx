@@ -71,7 +71,7 @@ const UserList: React.FC = () => {
             <AutoSizer style={{ margin: '4px'}}>
                 {({ height, width }) => (
                     <Box w={width} h={height}>
-                        <Grid templateColumns={`repeat(${columnHeadersData.length}, 1fr)`} m={'4px'} w={width}>
+                        <Grid templateColumns={`repeat(${columnHeadersData.length}, 1fr)`} w={width}>
                             {
                                 columnHeadersData?.map((item, index) => (
                                     <GridItem key={item.label} w={item.width} border='1px solid #222' display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' paddingX={4}>
