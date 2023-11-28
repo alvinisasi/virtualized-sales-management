@@ -19,7 +19,7 @@ const validationSchema = yup.object().shape({
     name: yup.string().required('Name is required'),
 })
 
-const Registration: React.FC = () => {
+const RegistrationPage: React.FC = () => {
     const form = useFormik({
         initialValues: {
             name: "",
@@ -112,4 +112,4 @@ const Registration: React.FC = () => {
     )
 }
 
-export default Registration
+export default RegistrationPage

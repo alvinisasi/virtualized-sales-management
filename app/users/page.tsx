@@ -13,7 +13,7 @@ const getUsers = async () => {
     return data
 }
 
-const Users = async () => {
+const UsersPage = async () => {
     const queryClient = getQueryClient()
     await queryClient.prefetchQuery({queryKey: ['users'], queryFn: getUsers})
     const dehydratedState = dehydrate(queryClient)
@@ -28,4 +28,4 @@ const Users = async () => {
     )
 }
 
-export default Users
+export default UsersPage
