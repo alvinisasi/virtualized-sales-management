@@ -11,7 +11,7 @@ import VirtualizedTable from "@/components/virtualizedTable";
 import DragButton from "@/components/dragButton";
 
 const columnHeaders: ColumnHeaderProps[] = [
-    { label: 'id', width: 50 },
+    { label: 'id', width: 150 },
     { label: 'name', width: 250 },
     { label: 'sales_id', width: 175 },
     { label: 'item_id', width: 150 },

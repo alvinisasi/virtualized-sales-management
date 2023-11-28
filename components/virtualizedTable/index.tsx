@@ -23,7 +23,7 @@ const Cell = ({ columnIndex, rowIndex, style, data, headerData }: CellProps) =>{
     let content = data[rowIndex][headerData[columnIndex].label]
     
     return (
-        <Box style={{ ...style, outline: "1px solid #222", padding: 8 }} w={'100%'} overflow={"hidden"} textOverflow={'ellipsis'}>
+        <Box style={{ ...style, border: "1px solid #222", padding: 8 }} w={'100%'} overflow={"hidden"} textOverflow={'ellipsis'}>
             <Text>{content}</Text>
         </Box>
     )
