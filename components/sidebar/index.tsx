@@ -19,6 +19,8 @@ import {
 } from 'react-icons/fi'
 import { IconType } from 'react-icons'
 import NextLink from 'next/link'
+import Link from 'next/link'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 
 interface LinkItemProps {
   name: string
@@ -37,6 +39,7 @@ interface SidebarProps extends BoxProps {
 }
 
 export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const currentPathName = usePathname()
   return (
     <Box
         bg={useColorModeValue('white', 'gray.900')}
@@ -53,7 +56,7 @@ export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
             <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
         </Flex>
         {LinkItems.map((link) => (
-            <NavItem key={link.name} icon={link.icon} route={link.route}>
+            <NavItem key={link.name} icon={link.icon} route={link.route} active={currentPathName === link.route ? true : false}>
                 {link.name}
             </NavItem>
         ))}
@@ -64,13 +67,16 @@ export const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 interface NavItemProps extends FlexProps {
   icon: IconType
   children: ReactText
-  route: string
+  route: string,
+  active: boolean
 }
-const NavItem = ({ icon, route, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, route, children, active, ...rest }: NavItemProps) => {
+  
   return (
     <Box
         as={NextLink}
         href={route}
+        passHref
         style={{ textDecoration: 'none' }}
         _focus={{ boxShadow: 'none' }}>
             <Flex
@@ -84,14 +90,8 @@ const NavItem = ({ icon, route, children, ...rest }: NavItemProps) => {
                     bg: 'cyan.400',
                     color: 'white',
                 }}
-                _active={{
-                    bg: 'pink.400',
-                    color: 'white',
-                }}
-                _activeLink={{
-                  bg: 'pink.400',
-                  color: 'white',
-              }}
+                backgroundColor={active ? 'cyan.400' : 'white'}
+                color={active ? 'white' : 'black'}
                 {...rest}>
                     {icon && (
                     <Icon
