@@ -85,3 +85,27 @@ export interface PostUser {
     name: string
     email: string
 }
+
+export interface DeleteUser {
+    id: string
+    name: string
+    email: string
+}
+
+export interface SearchProps {
+    data: UsersData[]
+}
+
+export interface UserDetailsProps {
+    data: UsersData
+    isOpen: boolean
+    onClose: () => void
+}
+
+export interface ModalProps {
+    title: string
+    isOpen: boolean
+    onConfirm: () => void
+    onCancel: () => void
+    body: string
+}

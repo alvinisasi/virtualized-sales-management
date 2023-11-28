@@ -13,7 +13,7 @@ const getSales = async () => {
   return data
 }
 
-const Home: React.FC = async () => {
+const SalesPage: React.FC = async () => {
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery({ queryKey: ['sales'], queryFn: getSales })
   const dehydratedState = dehydrate(queryClient)
@@ -28,4 +28,4 @@ const Home: React.FC = async () => {
   )
 }
 
-export default Home
+export default SalesPage
