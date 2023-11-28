@@ -27,8 +27,6 @@ const RegistrationPage: React.FC = () => {
         },
         validationSchema,
         onSubmit: (values) => {
-            console.log(values);
-            
             submitForm(values as UsersData)
         },
         isInitialValid: false

@@ -2,12 +2,13 @@
 
 import { getAllSales } from "@/services/sales";
 import { ColumnHeaderProps, SalesData } from "@/types";
-import { Box } from "@chakra-ui/react"
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react"
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { DraggableData, DraggableEvent } from "react-draggable";
 import VirtualizedTable from "@/components/virtualizedTable";
+import DragButton from "@/components/dragButton";
 
 const columnHeaders: ColumnHeaderProps[] = [
     { label: 'id', width: 50 },
@@ -47,6 +48,16 @@ const SalesList: React.FC = () => {
             <AutoSizer style={{ margin: '4px' }}>
                 {({ height, width }) => (
                     <Box w={width} h={height}>
+                        <Grid templateColumns={`repeat(${columnHeadersData.length}, 1fr)`} m={'4px'} w={width}>
+                            {
+                                columnHeadersData?.map((item, index) => (
+                                    <GridItem key={item.label} w={item.width} border='1px solid #222' display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' paddingX={4}>
+                                        <Text mr='8px'>{item.label}</Text>
+                                        <DragButton onDrag={(e, data) => dragHandler(e, data, index)} />
+                                    </GridItem>
+                                ))
+                            }
+                        </Grid>
                         {data && 
                         <VirtualizedTable headerData={columnHeadersData} data={data} height={height} width={width} />}
                     </Box>

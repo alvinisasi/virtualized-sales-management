@@ -19,9 +19,7 @@ const Search: React.FC<SearchProps> = ({ data }) => {
             search: ''
         },
         validationSchema,
-        onSubmit: (values) => {
-            console.log(values)
-        },
+        onSubmit: (values) => {},
     })
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
